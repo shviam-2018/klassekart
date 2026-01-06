@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import Pult from './components/pult.jsx'
-import { generateSeating, recordSeating, initializeHistory } from './utils/seatingAlgorithm.js'
+import { generateNewSeating } from './utils/seatingAlgorithm.js'
 import './App.css'
 
 function App() {
   const [students, setStudents] = useState([])
   const [studentInput, setStudentInput] = useState('')
   const [seating, setSeating] = useState([])
+  const [previousSeats, setPreviousSeats] = useState([])
   const [round, setRound] = useState(0)
 
   const handleAddStudent = () => {
@@ -26,27 +27,30 @@ function App() {
       return
     }
     
-    const { flatList, pairs } = generateSeating(students)
-    recordSeating(pairs)
-    setSeating(flatList)
+    const nyttKart = generateNewSeating(students, previousSeats)
+    setSeating(nyttKart)
+    setPreviousSeats(nyttKart)
     setRound(round + 1)
   }
 
   const handleReset = () => {
-    initializeHistory()
     setSeating([])
     setStudents([])
     setStudentInput('')
+    setPreviousSeats([])
     setRound(0)
   }
 
-  // Gruppér elevene: 2 par per rad (4 elever per rad)
+  // Gruppér parene: 2 par per rad
   const groupedRows = []
-  for (let i = 0; i < seating.length; i += 4) {
-    const pair1 = seating.slice(i, i + 2)
-    const pair2 = seating.slice(i + 2, i + 4)
+  for (let i = 0; i < seating.length; i += 2) {
+    const pair1 = seating[i]
+    const pair2 = seating[i + 1]
     groupedRows.push([pair1, pair2])
   }
+
+  // Flatten seating for display
+  const flatSeating = seating.flat()
 
   return (
     <div className='appContainer'>
