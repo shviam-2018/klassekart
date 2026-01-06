@@ -1,6 +1,6 @@
 import './style/pult.css'
 
-//tar inn en prop "name " som
+//tar inn en prop "name " som får vardi fra algorithmen 
 function Pult({ name = '' }) {
   return (
     <div className="pult">

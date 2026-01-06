@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Pult from './components/pult.jsx'
-import { generateNewSeating } from './utils/seatingAlgorithm.js'
+import { addStudent, removeStudent } from './services/studentService.js'
+import { generateSeating, groupSeatingByRows } from './services/seatingService.js'
 import './App.css'
 
 function App() {
@@ -11,23 +12,24 @@ function App() {
   const [round, setRound] = useState(0)
 
   const handleAddStudent = () => {
-    if (studentInput.trim() && !students.includes(studentInput.trim())) {
-      setStudents([...students, studentInput.trim()])
+    const updatedStudents = addStudent(students, studentInput)
+    if (updatedStudents.length > students.length) {
+      setStudents(updatedStudents)
       setStudentInput('')
     }
   }
 
   const handleRemoveStudent = (name) => {
-    setStudents(students.filter(s => s !== name))
+    setStudents(removeStudent(students, name))
   }
 
   const handleGenerateSeating = () => {
-    if (students.length < 2) {
+    const nyttKart = generateSeating(students, previousSeats)
+    if (!nyttKart) {
       alert('Du må ha minst 2 elever!')
       return
     }
     
-    const nyttKart = generateNewSeating(students, previousSeats)
     setSeating(nyttKart)
     setPreviousSeats(nyttKart)
     setRound(round + 1)
@@ -42,15 +44,7 @@ function App() {
   }
 
   // Gruppér parene: 2 par per rad
-  const groupedRows = []
-  for (let i = 0; i < seating.length; i += 2) {
-    const pair1 = seating[i]
-    const pair2 = seating[i + 1]
-    groupedRows.push([pair1, pair2])
-  }
-
-  // Flatten seating for display
-  const flatSeating = seating.flat()
+  const groupedRows = seating.length > 0 ? groupSeatingByRows(seating) : []
 
   return (
     <div className='appContainer'>
