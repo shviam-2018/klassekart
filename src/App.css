@@ -1,0 +1,154 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.appContainer {
+  width: 100%;
+}
+
+.appContainer h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.inputSection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.inputField {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.addBtn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.addBtn:hover {
+  background-color: #45a049;
+}
+
+.studentsList {
+  margin-bottom: 15px;
+}
+
+.studentsList h3 {
+  margin: 10px 0 10px 0;
+  font-size: 0.95em;
+}
+
+.studentsTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.studentTag {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9em;
+}
+
+.removeTag {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.generateBtn {
+  padding: 12px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+.generateBtn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.resetBtn {
+  padding: 12px 30px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+.resetBtn:hover {
+  background-color: #da190b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.seatingDisplay {
+  margin-top: 30px;
+}
+
+.seatingDisplay h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.pultContainer {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.par {
+  display: flex;
+  gap: 10px;
+}
