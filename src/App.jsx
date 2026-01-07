@@ -73,7 +73,7 @@ function App() {
                   onClick={() => handleRemoveStudent(student)}
                   className='removeTag'
                 >
-                  ×
+                  X
                 </button>
               </span>
             ))}
